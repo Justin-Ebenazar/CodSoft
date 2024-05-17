@@ -11,6 +11,7 @@ comp=0
 
 win=Tk()
 win.geometry('700x500')
+win.title('Rock,paper and Scissor')
 
 main_frame=Frame(win,bg='grey',height=500,width=700)
 main_frame.pack(fill='both',expand='True')

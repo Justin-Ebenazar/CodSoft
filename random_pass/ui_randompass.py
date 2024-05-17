@@ -1,5 +1,5 @@
 #new update
-from tkinter import*
+from tkinter import* 
 from tkinter import ttk as tko
 import random
 from tkinter import messagebox
