@@ -33,6 +33,8 @@ def game_play(rounds):
 
     def play():
         rps.pack_forget()
+        global user,comp
+        user,comp=0,0
         round_choser()
 
     backbutton=Button(uptab,image=backim2,command=play)          #backbutton 
@@ -157,6 +159,7 @@ def game_play(rounds):
                 playagain=messagebox.askyesno('Play again','Do you want to play again?')
                 if(playagain):
                     rps.pack_forget()
+                    global user,comp
                     user,comp=0,0
                     round_choser()
                 else:
