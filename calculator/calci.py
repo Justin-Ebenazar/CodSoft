@@ -50,6 +50,8 @@ def equal():
     global ans,eq
     try:
         ans=eval(eq)
+        if(isinstance(ans,float)):
+            ans=round(ans,7)
         bx.configure(text=str(ans))
         bx.place(x=280,y=50,anchor='e')
     except:
