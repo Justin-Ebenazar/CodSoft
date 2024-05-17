@@ -8,6 +8,7 @@ levels=['EASY','MEDIUM','HARD']
 
 win=Tk()
 win.geometry('700x400')
+win.wm_title("Random password generator")
 
 main_frame=Frame(win,height=399,width=700)                              #main frame
 main_frame.pack(expand='True')
@@ -71,19 +72,19 @@ def pass_gen(difficulty,pass_len):
             password+=random.choice(li)
         gen_password.configure(text=password)
     
-def pass_parser(event):
+def pass_parser(event):                                                             #exception handling for invalid length
     if((size_enter.get()).isdigit() and int(size_enter.get())<=25):
         pass_gen(list_op.get(),int(size_enter.get()))
     else:
        messagebox.showinfo('Warning !','Kindly enter a valid password length') 
 
-gen=Button(frame3,text='Generate',font=('times new roman',15),command=lambda:pass_parser('<Return>'),bg='lightblue')
+gen=Button(frame3,text='Generate',font=('times new roman',15),command=lambda:pass_parser('<Return>'),bg='lightblue') # generate button
 gen.pack(side='top',pady=15)    
 
 gen_password.pack(side='left',expand="True")
 
 copy=Button(frame3,text='Copy',font=('times new roman',15),bg='lightgreen',fg='white',command=lambda:win.clipboard_append(password))
-copy.pack(side='right',padx=40)
+copy.pack(side='right',padx=40)         #copy button
 
 win.bind('<Return>',pass_parser)
 

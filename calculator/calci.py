@@ -3,18 +3,18 @@ from tkinter import ttk
 
 win=Tk()
 win.geometry('300x420')
-win.title('My calculator')
+win.title('Calculator')
 
-bx=Label(win,text='',font=('calibri',30))
+bx=Label(win,text='',font=('calibri',30))           # equation input indicator label
 bx.place(x=280,y=50,anchor='e')
 
-stex=Label(win,text='0',font=('calibri',15),fg='grey')
+stex=Label(win,text='0',font=('calibri',15),fg='grey')      # answer indicator label
 stex.place(x=280,y=20,anchor='e')
 
 eq=''
 ans=123
 
-def resizeimage(img, newWidth, newHeight):
+def resizeimage(img, newWidth, newHeight):          # resize function for images
         oldWidth = img.width()
         oldHeight = img.height()
         newPhotoImage = PhotoImage(width=newWidth, height=newHeight)
@@ -27,7 +27,7 @@ def resizeimage(img, newWidth, newHeight):
         return newPhotoImage
 
 
-def func(a):
+def func(a):                    # function used for backspace button
     global eq,stex
     if(a=='b' and eq!=''):
         eq=eq[:len(eq)-1]
@@ -38,7 +38,7 @@ def func(a):
     stex.configure(text=eq)
     stex.place(x=280,y=20,anchor='e')
 
-def canc():
+def canc():                 # function used for cancel button
     global eq
     eq=''
     stex.configure(text='0')
@@ -46,15 +46,15 @@ def canc():
     bx.configure(text='')
     bx.place(x=280,y=50,anchor='e')
 
-def equal():
+def equal():                    # function used for equal , which evaluates the answer
     global ans,eq
     try:
         ans=eval(eq)
-        if(isinstance(ans,float)):
+        if(isinstance(ans,float)):          # if the answer is float , it rounds it off to 7 decimals
             ans=round(ans,7)
         bx.configure(text=str(ans))
         bx.place(x=280,y=50,anchor='e')
-    except:
+    except:                                    # exception handles if the equation is not a valid one 
         if(eq==''):
             bx.configure(text='')
             bx.place(x=280,y=50,anchor='e')
@@ -63,7 +63,7 @@ def equal():
         bx.place(x=280,y=50,anchor='e')
     eq=''
     
-n1=PhotoImage(file = r"zero.png")    
+n1=PhotoImage(file = r"zero.png")               # images for the calculator buttons...
 n2=PhotoImage(file = r"two.png")
 n3=PhotoImage(file = r"three.png")
 n4=PhotoImage(file = r"four.png")
@@ -86,7 +86,7 @@ ndiv=PhotoImage(file = r"div.png")
 neq=PhotoImage(file = r"equal.png")
 nflo=PhotoImage(file = r"flo.png")
 
-imone=resizeimage(n1,70,62)
+imone=resizeimage(n1,70,62)                 # resizing the images for to fit the right size of buttons 
 imtwo=resizeimage(n2,70,62)
 imthree=resizeimage(n3,70,62)
 imfour=resizeimage(n4,70,62)
@@ -110,7 +110,7 @@ immin=resizeimage(nmi,70,62)
 imdiv=resizeimage(ndiv,70,62)
 immul=resizeimage(nin,70,62)
 
-one=Button(win,image=imone,command=lambda:func(1))
+one=Button(win,image=imone,command=lambda:func(1))          # creating buttons and assiginig the regarding images to it
 two=Button(win,image=imtwo,command=lambda:func(2))
 three=Button(win,image=imthree,command=lambda:func(3))
 four=Button(win,image=imfour,command=lambda:func(4))
