@@ -59,13 +59,14 @@ def pass_gen(difficulty,pass_len):
         for i in range(pass_len):
             password+=random.choice(alpha+num)
         if(any(i.isnumeric() for i in password)):
-            print(password)
+            gen_password.configure(text=password)
         else:
             rem=random.randint(2,pass_len-1)
             ku=list(password)
             for i in range(rem):
                 ku[random.choice(list(range(pass_len)))]=random.choice(num)
-            gen_password.configure(password:=''.join(ku))
+            password=''.join(ku)
+            gen_password.configure(text=password)
     else:
         for i in range(pass_len):
             li=random.choice([alpha,num,sym,alpha,alpha,alpha,num,sym,num,num,sym,sym,alpha,num,sym,alpha,num,sym])
